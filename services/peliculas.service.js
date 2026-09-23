@@ -28,10 +28,16 @@ export async function create(data) {
     duracion: Number(data.duracion),
     generos: data.generos,
     seccion: data.seccion,
+    directorId: new ObjectId(data.directorId),
+    directorNombre: data.directorNombre,
     activo: true,
   };
   const resultado = await coleccion().insertOne(nuevaPelicula);
   return { _id: resultado.insertedId, ...nuevaPelicula };
+}
+
+export async function getByDirector(directorId) {
+  return coleccion().find({ directorId: new ObjectId(directorId), activo: true }).toArray();
 }
 
 export async function update(id, data) {

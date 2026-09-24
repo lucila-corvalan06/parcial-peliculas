@@ -12,6 +12,8 @@ app.set("views", "./views");
 
 app.use(express.json());
 
+app.use(express.static("css"));
+
 app.use("/api/peliculas", peliculasRoutes); 
 app.use("/api/directores", directoresRoutes);
 app.use("/", webRoutes); 

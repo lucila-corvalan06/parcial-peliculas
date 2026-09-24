@@ -8,8 +8,20 @@ function coleccion() {
 export async function getAll(filtros = {}) {
   const query = { activo: true };
 
-  if (filtros.seccion) query.seccion = filtros.seccion;
-  if (filtros.anio) query.anio = Number(filtros.anio);
+  if (filtros.seccion) {
+    query.seccion = filtros.seccion;
+  }
+
+  if (filtros.anio) {
+    query.anio = Number(filtros.anio);
+  }
+
+  if (filtros.titulo) {
+    query.titulo = {
+      $regex: filtros.titulo,
+      $options: "i",
+    };
+  }
 
   return coleccion().find(query).toArray();
 }
@@ -28,7 +40,7 @@ export async function create(data) {
     duracion: Number(data.duracion),
     generos: data.generos,
     seccion: data.seccion,
-    directorId: new ObjectId(data.directorId),
+    directorId: data.directorId,
     directorNombre: data.directorNombre,
     activo: true,
   };
@@ -37,7 +49,9 @@ export async function create(data) {
 }
 
 export async function getByDirector(directorId) {
-  return coleccion().find({ directorId: new ObjectId(directorId), activo: true }).toArray();
+  return coleccion()
+    .find({ directorId: directorId, activo: true })
+    .toArray();
 }
 
 export async function update(id, data) {

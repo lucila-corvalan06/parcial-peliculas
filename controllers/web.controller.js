@@ -10,7 +10,15 @@ const SECCIONES = [
 ];
 
 export async function index(req, res) {
-  res.render("index", { secciones: SECCIONES });
+  const peliculas = await peliculasService.getAll({
+    titulo: req.query.titulo,
+  });
+
+  res.render("index", {
+    secciones: SECCIONES,
+    peliculas,
+    busqueda: req.query.titulo || "",
+  });
 }
 
 export async function seccion(req, res) {
@@ -18,9 +26,13 @@ export async function seccion(req, res) {
   const seccionActual = SECCIONES.find((s) => s.slug === slug);
 
   if (!seccionActual) {
-    return res.status(404).send("Sección no encontrada");
+    return res.status(404).render("404");
   }
 
   const peliculas = await peliculasService.getAll({ seccion: slug });
-  res.render("seccion", { seccion: seccionActual, peliculas });
+    res.render("seccion", {
+        seccion: seccionActual,
+        peliculas,
+        secciones: SECCIONES,
+    });
 }

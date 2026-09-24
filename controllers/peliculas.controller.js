@@ -6,6 +6,7 @@ export async function getAll(req, res) {
     const filtros = {
       seccion: req.query.seccion,
       anio: req.query.anio,
+       titulo: req.query.titulo,
     };
     const peliculas = await peliculasService.getAll(filtros);
     res.status(200).json(peliculas);

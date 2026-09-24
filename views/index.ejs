@@ -174,12 +174,18 @@
                    Editar
                 </a>
 
-                <button
-                  type="button"
-                  class="btn btn-secondary flex-fill"
+                <form
+                action="/peliculas/<%= p._id %>/eliminar"
+                method="POST"
+                class="flex-fill"
                 >
-                   Eliminar
-                </button>
+                    <button
+                        type="submit"
+                        class="btn btn-secondary w-100"
+                    >
+                         Eliminar
+                    </button>
+                </form>
 
               </div>
 

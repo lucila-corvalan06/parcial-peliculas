@@ -67,3 +67,9 @@ export async function actualizar(req, res) {
 
   res.redirect("/");
 }
+
+export async function eliminar(req, res) {
+  await peliculasService.remove(req.params.id);
+
+  res.redirect("/");
+}

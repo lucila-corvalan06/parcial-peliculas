@@ -136,38 +136,62 @@
                 style="height: 400px; object-fit: cover;"
               >
 
-              <div class="card-body d-flex flex-column">
+                <div class="card-body d-flex flex-column">
 
-                <h5 class="card-title">
-                  <%= p.titulo %>
-                </h5>
+                    <h5 class="card-title">
+                    <%= p.titulo %>
+                    </h5>
 
-                <p class="card-text">
-                  <%= p.sinopsis %>
-                </p>
+                    <p class="card-text">
+                    <%= p.sinopsis %>
+                    </p>
 
-                <p class="card-text mb-1">
-                  <strong>Año:</strong> <%= p.anio %>
-                </p>
+                    <p class="card-text mb-1">
+                    <strong>Año:</strong> <%= p.anio %>
+                    </p>
 
-                <p class="card-text mb-1">
-                  <strong>Duración:</strong> <%= p.duracion %> min
-                </p>
+                    <p class="card-text mb-1">
+                    <strong>Duración:</strong> <%= p.duracion %> min
+                    </p>
 
-                <p class="card-text mb-3">
-                  <strong>Director:</strong>
-                  <%= p.directorNombre %>
-                </p>
+                    <p class="card-text mb-3">
+                    <strong>Director:</strong>
+                    <%= p.directorNombre %>
+                    </p>
 
-                <a
-                  href="<%= p.trailer %>"
-                  target="_blank"
-                  class="btn btn-danger mt-auto"
-                >
-                  Ver trailer
-                </a>
+                    <div class="d-flex gap-2 mb-2">
 
-              </div>
+                        <a
+                            href="/peliculas/<%= p._id %>/editar"
+                            class="btn btn-secondary flex-fill"
+                        >
+                            Editar
+                        </a>
+
+                        <form
+                            action="/peliculas/<%= p._id %>/eliminar"
+                            method="POST"
+                            class="flex-fill"
+                        >
+                            <button
+                                type="submit"
+                                class="btn btn-secondary w-100"
+                                >
+                                Eliminar
+                            </button>
+                        </form>    
+
+                    </div>
+
+                    <a
+                    href="<%= p.trailer %>"
+                    target="_blank"
+                    class="btn btn-trailer mt-auto"
+                    >
+                        Ver trailer
+                    </a>
+
+                </div>
 
             </div>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +17,8 @@
 
 <body>
 
-  <!-- Menú de navegación -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
     <div class="container">
 
       <a class="navbar-brand" href="/">
@@ -59,11 +60,12 @@
         </ul>
 
       </div>
+
     </div>
+
   </nav>
 
 
-  <!-- Contenido principal -->
   <main class="container py-5">
 
     <div class="mb-5">
@@ -79,32 +81,39 @@
     </div>
 
 
-    <!-- Buscador -->
-    <form action="/" method="GET" class="mb-5">
+    <div class="d-flex gap-3 mb-5">
 
-      <div class="input-group">
+      <form action="/" method="GET" class="flex-grow-1">
 
-        <input
-          type="text"
-          name="titulo"
-          class="form-control"
-          placeholder="Buscar una película..."
-          value="<%= busqueda %>"
-        >
+        <div class="input-group">
 
-        <button class="btn btn-trailer" type="submit">
-          Buscar
-        </button>
+          <input
+            type="text"
+            name="titulo"
+            class="form-control"
+            placeholder="Buscar una película..."
+            value="<%= busqueda %>"
+          >
 
-      </div>
+          <button class="btn btn-trailer" type="submit">
+            Buscar
+          </button>
 
-    </form>
+        </div>
+
+      </form>
+
+      <a href="/peliculas/agregar" class="btn btn-trailer">
+        + Agregar película
+      </a>
+
+    </div>
 
 
-    <!-- Todas las películas -->
     <h2 class="seccion-titulo">
       Todas las películas
     </h2>
+
 
     <div class="row g-4">
 
@@ -156,6 +165,24 @@
                 <strong>Director:</strong> <%= p.directorNombre %>
               </p>
 
+              <div class="d-flex gap-2 mb-2">
+
+                <a
+                  href="/peliculas/<%= p._id %>/editar"
+                  class="btn btn-secondary flex-fill"
+                >
+                   Editar
+                </a>
+
+                <button
+                  type="button"
+                  class="btn btn-secondary flex-fill"
+                >
+                   Eliminar
+                </button>
+
+              </div>
+
               <a
                 href="<%= p.trailer %>"
                 target="_blank"
@@ -177,10 +204,10 @@
   </main>
 
 
-  <!-- Bootstrap JS -->
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   ></script>
 
 </body>
+
 </html>

@@ -1,4 +1,5 @@
 import * as peliculasService from "../services/peliculas.service.js";
+import * as directoresService from "../services/directores.service.js";
 
 const SECCIONES = [
   { nombre: "Acción", slug: "accion" },
@@ -35,4 +36,34 @@ export async function seccion(req, res) {
         peliculas,
         secciones: SECCIONES,
     });
+}
+
+export async function agregar(req, res) {
+  const directores = await directoresService.getAll();
+
+  res.render("agregar", {
+    directores,
+    secciones: SECCIONES,
+  });
+}
+
+export async function editar(req, res) {
+  const pelicula = await peliculasService.getById(req.params.id);
+  const directores = await directoresService.getAll();
+
+  if (!pelicula) {
+    return res.status(404).render("404");
+  }
+
+  res.render("editar", {
+    pelicula,
+    directores,
+    secciones: SECCIONES,
+  });
+}
+
+export async function actualizar(req, res) {
+  await peliculasService.update(req.params.id, req.body);
+
+  res.redirect("/");
 }

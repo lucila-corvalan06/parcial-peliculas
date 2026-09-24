@@ -85,23 +85,33 @@
     </div>
 
     
-    <form action="/" method="GET" class="mb-5">
-        <div class="input-group">
+    <!-- Buscador y agregar película -->
+    <div class="d-flex gap-3 mb-5">
+
+        <form action="/" method="GET" class="flex-grow-1">
+
+            <div class="input-group">
 
             <input
-            type="text"
-            name="titulo"
-            class="form-control"
-            placeholder="Buscar una película..."
+                type="text"
+                name="titulo"
+                class="form-control"
+                placeholder="Buscar una película..."
             >
 
             <button class="btn btn-trailer" type="submit">
-            Buscar
+                Buscar
             </button>
 
-        </div>
-    </form>
+            </div>
 
+        </form>
+
+        <a href="/peliculas/agregar" class="btn btn-trailer">
+            + Agregar película
+        </a>
+
+    </div>
 
     <% if (peliculas.length === 0) { %>
 

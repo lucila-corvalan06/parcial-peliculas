@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container">
+
+    <a class="navbar-brand" href="/">
+      Cinema
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menu"
+      aria-controls="menu"
+      aria-expanded="false"
+      aria-label="Abrir menú"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            Inicio
+          </a>
+        </li>
+
+        <% secciones.forEach(function(seccion) { %>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/secciones/<%= seccion.slug %>">
+              <%= seccion.nombre %>
+            </a>
+          </li>
+
+        <% }); %>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/directores">
+            Directores
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

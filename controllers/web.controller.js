@@ -73,3 +73,46 @@ export async function eliminar(req, res) {
 
   res.redirect("/");
 }
+
+export async function directores(req, res) {
+  const directores = await directoresService.getAll();
+
+  res.render("directores", {
+    directores,
+    secciones: SECCIONES,
+  });
+}
+
+export function agregarDirector(req, res) {
+  res.render("agregar-director");
+}
+
+export async function crearDirector(req, res) {
+  await directoresService.create(req.body);
+
+  res.redirect("/directores");
+}
+
+export async function editarDirector(req, res) {
+  const director = await directoresService.getById(req.params.id);
+
+  if (!director) {
+    return res.status(404).render("404");
+  }
+
+  res.render("editar-director", {
+    director,
+  });
+}
+
+export async function actualizarDirector(req, res) {
+  await directoresService.update(req.params.id, req.body);
+
+  res.redirect("/directores");
+}
+
+export async function eliminarDirector(req, res) {
+  await directoresService.remove(req.params.id);
+
+  res.redirect("/directores");
+}

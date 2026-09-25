@@ -15,61 +15,8 @@
 </head>
 
 <body>
+  <%- include("partials/navbar") %>
 
-  <!-- Menú de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-    <div class="container">
-
-      <a class="navbar-brand" href="/">
-         Cinema
-      </a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#menu"
-        aria-controls="menu"
-        aria-expanded="false"
-        aria-label="Abrir menú"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="menu">
-
-        <ul class="navbar-nav ms-auto">
-
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                Inicio
-                </a>
-            </li>
-
-            <% secciones.forEach(function(s) { %>
-
-                <li class="nav-item">
-                <a
-                    class="nav-link <%= s.slug === seccion.slug ? 'active' : '' %>"
-                    href="/secciones/<%= s.slug %>"
-                >
-                    <%= s.nombre %>
-                </a>
-                </li>
-
-            <% }); %>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-  </nav>
-
-
-  <!-- Contenido -->
   <main class="container py-5">
 
     <div class="mb-5">

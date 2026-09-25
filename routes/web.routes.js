@@ -11,6 +11,7 @@ router.get("/directores/:id/editar", webController.editarDirector);
 router.post("/directores/:id/editar", webController.actualizarDirector);
 router.post("/directores/:id/eliminar", webController.eliminarDirector);
 router.get("/peliculas/agregar", webController.agregar);
+router.post("/peliculas/agregar", webController.crearPelicula);
 router.get("/peliculas/:id/editar", webController.editar);
 router.post("/peliculas/:id/editar", webController.actualizar);
 router.post("/peliculas/:id/eliminar", webController.eliminar);

@@ -55,9 +55,22 @@ export async function getByDirector(directorId) {
 }
 
 export async function update(id, data) {
+  const camposPermitidos = {
+    titulo: data.titulo,
+    sinopsis: data.sinopsis,
+    trailer: data.trailer,
+    poster: data.poster,
+    anio: data.anio,
+    duracion: data.duracion,
+    generos: data.generos,
+    seccion: data.seccion,
+    directorId: data.directorId,
+    directorNombre: data.directorNombre,
+  };
+
   return coleccion().findOneAndUpdate(
     { _id: new ObjectId(id), activo: true },
-    { $set: data },
+    { $set: camposPermitidos },
     { returnDocument: "after" }
   );
 }

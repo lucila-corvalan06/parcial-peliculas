@@ -25,9 +25,15 @@ export async function create(data) {
 }
 
 export async function update(id, data) {
+  const camposPermitidos = {
+    nombre: data.nombre,
+    foto: data.foto,
+    descripcion: data.descripcion,
+  };
+
   return coleccion().findOneAndUpdate(
     { _id: new ObjectId(id), activo: true },
-    { $set: data },
+    { $set: camposPermitidos },
     { returnDocument: "after" }
   );
 }
